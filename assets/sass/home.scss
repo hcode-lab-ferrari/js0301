@@ -30,6 +30,9 @@
                 color: var(--black);
             }
         }
+        ul {
+            display: none;
+        }
     }
     .gallery {
         min-width: 320px;
@@ -61,6 +64,35 @@
                     color: var(--gray-3);
                 }
             }
+        }
+    }
+}
+
+@media(min-width: 576px) {
+    #home {
+        .gallery {
+            flex-direction: row;
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    #home {
+        margin-top: -100px;
+        hr {
+            top: 100px;
+        }
+        > header {
+            max-height: initial;
+            background-image: url('../images/ferrari-vermelha.webp');
+        }
+    }
+}
+
+@media (min-width: 1920px) {
+    #home {
+        > header {
+            background-image: url('../images/ferrari-vermelha@2x.webp');
         }
     }
 }

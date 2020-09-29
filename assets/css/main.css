@@ -951,6 +951,24 @@ header.page-title hr {
     color: var(--white);
   }
 }
+.alert {
+  position: relative;
+  padding: 0.75rem 1.25rem;
+  margin-bottom: 1rem;
+  border: 1px solid transparent;
+  border-radius: var(--border-radius);
+}
+.alert.danger {
+  color: var(--danger-color);
+  background-color: var(--danger);
+  border-color: var(--danger-border);
+}
+.alert.success {
+  color: var(--success-color);
+  background-color: var(--success);
+  border-color: var(--success-border);
+}
+
 #home {
   flex-direction: column;
   margin-top: -80px;
@@ -1005,6 +1023,9 @@ header.page-title hr {
   background-color: var(--white);
   color: var(--black);
 }
+#home > header ul {
+  display: none;
+}
 #home .gallery {
   min-width: 320px;
   flex-direction: column;
@@ -1038,6 +1059,28 @@ header.page-title hr {
   color: var(--gray-3);
 }
 
+@media (min-width: 576px) {
+  #home .gallery {
+    flex-direction: row;
+  }
+}
+@media (min-width: 1200px) {
+  #home {
+    margin-top: -100px;
+  }
+  #home hr {
+    top: 100px;
+  }
+  #home > header {
+    max-height: initial;
+    background-image: url("../images/ferrari-vermelha.webp");
+  }
+}
+@media (min-width: 1920px) {
+  #home > header {
+    background-image: url("../images/ferrari-vermelha@2x.webp");
+  }
+}
 #service {
   margin-top: var(--space);
   flex-direction: column;
@@ -1115,6 +1158,60 @@ header.page-title hr {
 
 #contact {
   flex-direction: column;
+}
+#contact > h2 {
+  font-size: 27px;
+  font-weight: bold;
+  color: var(--dark-0);
+  text-transform: uppercase;
+  margin: 0;
+  padding: 0 var(--space);
+}
+#contact p {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--gray-1);
+}
+#contact > section {
+  flex-direction: column;
+}
+#contact #map {
+  background-image: url("../images/mapa.png");
+  height: 263px;
+  width: 100%;
+  margin-top: var(--space);
+}
+#contact .contacts {
+  margin: 0;
+  padding: var(--space);
+  margin-top: var(--space);
+  flex-direction: column;
+}
+#contact .contacts li {
+  border: var(--gray-3) 1px solid;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--space);
+  margin-bottom: calc(var(--space) * 3);
+  text-align: center;
+  color: var(--gray-1);
+}
+#contact .contacts li img {
+  max-width: 100px;
+  background-color: var(--white);
+  margin: 0 auto;
+  margin-top: -60px;
+  padding: 0 var(--space);
+}
+#contact .contacts li p {
+  margin: 0;
+  font-size: 25px;
+  font-weight: 300;
+}
+#contact .contacts li p.title {
+  font-weight: 600;
+  font-size: 24px;
 }
 
 /*# sourceMappingURL=main.css.map */
