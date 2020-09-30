@@ -44,3 +44,37 @@
         }
     }
 }
+
+@media (min-width: 768px) {
+    #service {
+        > div {
+            flex-direction: column-reverse;
+            .icons {
+                flex-direction: row;
+                justify-content: space-around;
+                figure {
+                    margin: calc(5 * var(--space)) 0;
+                    img {
+                        width: 150px;
+                    }
+                }
+            }
+            a {
+                width: 200px;
+                margin: calc(3 * var(--space)) auto;
+                text-align: center;
+            }
+        }
+    }
+}
+
+@media (min-width: 992px) {
+    #service {
+        h2 {
+            font-size: 60px;
+            small {
+                font-size: 35px;
+            }
+        }
+    }
+}

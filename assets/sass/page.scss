@@ -7,7 +7,7 @@ header {
         h1, h2, h3, h4, h5, h6 {
             color: var(--green);
             margin: 0;
-            font-size: 32px;
+            font-size: 23px;
             font-weight: 600;
         }
         hr {
@@ -95,6 +95,13 @@ header {
 }
 
 @media (min-width: 1200px) {
+    header {
+        &.page-title {
+            h1, h2, h3, h4, h5, h6 {
+                font-size: 30px;
+            }
+        }
+    }
     .page {
         > header {
             justify-content: flex-start;

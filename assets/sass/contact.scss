@@ -55,3 +55,46 @@
         }
     }
 }
+
+@media (min-width: 992px) {
+    #contact {
+        > h2 {
+            font-size:  60px;
+        }
+        > section {
+            flex-direction:  row;
+            form, #map {
+                flex: 1;
+            }
+            form {
+               max-width: unset;
+               textarea {
+                   min-height: 160px;
+                   resize: vertical;
+               }
+            }
+            #map {
+                margin-left: 0;
+                height: 570px;
+            }
+        }
+        .contacts {
+            flex-direction: row;
+            li + li {
+                margin-left: var(--space);
+            }
+        }
+    }
+}
+
+@media (min-width: 1200px) {
+    #contact {
+        > section {
+            form {
+                textarea {
+                    min-height: 245px;
+                }
+            }   
+        }
+    }
+}
