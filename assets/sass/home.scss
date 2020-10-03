@@ -73,6 +73,20 @@
         .gallery {
             flex-direction: row;
         }
+        > header {
+            ul {
+                display: flex;
+                color: var(--white);
+                font-size: 30px;
+                margin: 0;
+                width: 440px;
+                padding: unset;
+                justify-content: space-around;
+            }
+            h1 {
+                margin-top: unset;
+            }
+        }
     }
 }
 
