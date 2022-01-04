@@ -6,7 +6,7 @@
   "scripts": {
     "sass": "sass --watch assets/sass/main.scss:assets/css/main.css",
     "build": "sass assets/sass/main.scss:assets/css/main.css --style=compressed",
-    "dev": "webpack serve"
+    "hcode": "webpack serve"
   },
   "keywords": [],
   "author": "",
