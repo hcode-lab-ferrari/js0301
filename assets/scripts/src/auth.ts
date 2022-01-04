@@ -53,11 +53,29 @@ if (authPage) {
 
   const formAuthEmail = document.querySelector("#auth-email");
 
-  formAuthEmail?.addEventListener("submit", (e: any) => {
+  formAuthEmail?.addEventListener("submit", (e: Event) => {
     e.preventDefault();
     if (e.target) {
-      const target: HTMLButtonElement = e.target;
-      const btnSubmit = target.querySelector("[type=submit]");
+      const target = e.target as HTMLButtonElement;
+      if (target.querySelector("[type=submit]")) {
+        const btnSubmit: HTMLButtonElement | null =
+          target.querySelector("[type=submit]");
+        if (btnSubmit) {
+          btnSubmit.disabled = true;
+
+          if (formAuthEmail.querySelector("[type=email]")) {
+            const email: HTMLInputElement | null =
+              formAuthEmail.querySelector("[type=email]");
+            if (email) {
+              sessionStorage.setItem("email", email.value);
+              location.hash = "#login";
+              btnSubmit.disabled = false;
+              //button[type=submit]:disabled { background: gray} CSS
+            }
+          }
+        }
+      }
     }
   });
 }
+//ARIA - Acessibilidade
