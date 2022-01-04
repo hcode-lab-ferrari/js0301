@@ -50,9 +50,12 @@ if (authPage) {
     //o site carregou.
     authHash();
   });
+  window.addEventListener("hashchange", (e) => {
+    //o site carregou.
+    authHash();
+  });
 
   const formAuthEmail = document.querySelector("#auth-email");
-
   formAuthEmail?.addEventListener("submit", (e: Event) => {
     e.preventDefault();
     if (e.target) {
