@@ -1,3 +1,3 @@
 let curso: string = "JS Developer";
 
-console.log(curso);
+console.log(curso.toUpperCase());
