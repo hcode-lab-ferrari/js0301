@@ -55,30 +55,26 @@ if (authPage) {
     authHash();
   });
 
-  const formAuthEmail = document.querySelector("#auth-email");
-  formAuthEmail?.addEventListener("submit", (e: Event) => {
-    e.preventDefault();
-    if (e.target) {
-      const target = e.target as HTMLButtonElement;
-      if (target.querySelector("[type=submit]")) {
-        const btnSubmit: HTMLButtonElement | null =
-          target.querySelector("[type=submit]");
-        if (btnSubmit) {
-          btnSubmit.disabled = true;
+  const formAuthEmail = document.querySelector("#auth-email") as HTMLFormElement;
 
-          if (formAuthEmail.querySelector("[type=email]")) {
-            const email: HTMLInputElement | null =
-              formAuthEmail.querySelector("[type=email]");
-            if (email) {
-              sessionStorage.setItem("email", email.value);
-              location.hash = "#login";
-              btnSubmit.disabled = false;
-              //button[type=submit]:disabled { background: gray} CSS
-            }
-          }
-        }
-      }
+  formAuthEmail.addEventListener("submit", (e: Event) => {
+
+    e.preventDefault();
+
+    try {
+      const form = e.target as HTMLFormElement;
+      const button = form.querySelector("[type=submit]") as HTMLButtonElement;
+      const {value} = form.querySelector("[type=email]") as HTMLInputElement;
+
+      button.disabled = true;
+      sessionStorage.setItem("email", value);
+      location.hash = "#login";
+      button.disabled = false;
+    } catch (e) {
+      console.warn(`Houve um problema no envio do formulário.`);
     }
+          
   });
+
 }
 //ARIA - Acessibilidade

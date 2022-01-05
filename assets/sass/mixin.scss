@@ -16,9 +16,15 @@
     color: var(--black);
     &:hover {
         background-color: var(--black-10);
+        &:disabled {
+            background-color: var(--gray-1);
+        }
     }
     &:active {
         background-color: var(--black-75);
+    }
+    &:disabled {
+        background-color: var(--gray-1);
     }
 }
 
