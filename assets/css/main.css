@@ -790,6 +790,9 @@ header.page-title hr {
 .calendar .days li.selected:active {
   background-color: var(--green-active);
 }
+.calendar .days li.month-prev, .calendar .days li.month-next {
+  color: var(--gray-2);
+}
 
 @media (min-width: 992px) {
   .calendar {

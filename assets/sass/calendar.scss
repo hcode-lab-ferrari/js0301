@@ -84,6 +84,9 @@
                     background-color: var(--green-active); 
                 }
             }
+            &.month-prev, &.month-next {
+                color: var(--gray-2);
+            }
         }
     }
 }
