@@ -4,3 +4,5 @@ import "./calendar";
 import "./time-options";
 import "./services";
 import "./credicard";
+import "./aside";
+import "./change-photo";

@@ -48,6 +48,7 @@ header {
             flex: 1;
             max-height: calc(100vh - 339px);
             overflow-y: auto;
+            align-items: flex-start;
             table {
                 border-collapse: collapse;
                 width: 100%;
