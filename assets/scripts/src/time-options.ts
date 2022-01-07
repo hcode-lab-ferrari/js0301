@@ -3,6 +3,7 @@ import parse from 'date-fns/parse';
 import format from 'date-fns/format';
 import locale from 'date-fns/locale/pt-BR';
 import { TimeOptionItem } from "./types/timeOptionItem";
+import appendChild from "./functions/appendChild";
 
 const page = document.querySelector("#time-options") as HTMLElement;
 
@@ -42,43 +43,44 @@ if (page) {
 
     const scheduleAt = parse(values.schedule_at, 'yyyy-MM-dd', new Date());
 
-    const checkSelectedInput = () => {
+    if (scheduleAt.toString() === "Invalid Date") {
+        location.href = "schedules-new.html";
+    } else {
 
-        const button = page.querySelector("[type=submit]") as HTMLButtonElement;
+        const checkSelectedInput = () => {
 
-        if (page.querySelector("[name=option]:checked")) {
-            button.disabled = false;
-        } else {
-            button.disabled = true;
+            const button = page.querySelector("[type=submit]") as HTMLButtonElement;
+
+            if (page.querySelector("[name=option]:checked")) {
+                button.disabled = false;
+            } else {
+                button.disabled = true;
+            }
+
         }
 
+        options.innerHTML = "";
+
+        timeOptions.forEach(item => {
+
+            const label = appendChild(
+                "label",
+                `
+                    <input type="radio" name="option" value="${item.value}" />
+                    <span>${item.name}</span>
+                `, 
+                options
+            );
+
+            const labelInput = label.querySelector("input") as HTMLInputElement;
+
+            labelInput.addEventListener("change", checkSelectedInput);
+
+        });
+
+        title.innerText = format(scheduleAt, "cccc, d 'de' MMMM 'de' yyyy", { locale });
+
     }
-
-    options.innerHTML = "";
-
-    timeOptions.forEach(item => {
-
-        const label = document.createElement("label");
-
-        label.innerHTML = `
-            <input type="radio" name="option" value="${item.value}" />
-            <span>${item.name}</span>
-        `;
-
-        const labelInput = label.querySelector("input") as HTMLInputElement;
-
-        labelInput.addEventListener("change", checkSelectedInput);
-
-        options.appendChild(label);
-
-    });
-
-    
-
-
-    title.innerText = format(scheduleAt, "cccc, d 'de' MMMM 'de' yyyy", { locale });
-
-    console.log(scheduleAt);
 
 
 }

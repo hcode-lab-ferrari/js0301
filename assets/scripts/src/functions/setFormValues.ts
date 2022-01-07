@@ -20,6 +20,20 @@ export default function setFormValues(formEl: HTMLFormElement, values: AnyObject
                 case "password":
                 case "color":
                     field.value = values[key];
+                    break;
+
+                case "radio":
+                    const radio = formEl.querySelector(`[name=${key}][value='${values[key]}']`) as HTMLInputElement;
+                    if (radio) {
+                        radio.checked = true;
+                    }
+                    break;
+                case "checkbox":
+                    if (Boolean(Number(values[key]))) {
+                        (field as HTMLInputElement).checked = true;                    
+                    }
+                    break;
+                default:
             }
         } else if (field.tagName.toLowerCase() === "textarea") {
             field.innerHTML = values[key];
@@ -30,7 +44,7 @@ export default function setFormValues(formEl: HTMLFormElement, values: AnyObject
 
             if (!select.multiple) {
 
-                field.querySelectorAll<HTMLOptionElement>("option:selected").forEach(option => {
+                field.querySelectorAll<HTMLOptionElement>("option:checked").forEach(option => {
                     option.selected = false;
                 })
 

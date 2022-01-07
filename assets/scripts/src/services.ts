@@ -1,4 +1,6 @@
+import appendChild from "./functions/appendChild";
 import formatCurrency from "./functions/formatCurrency";
+import getFormValues from "./functions/getFormValues";
 import queryStringToJSON from "./functions/queryStringToJSON";
 import setFormValues from "./functions/setFormValues";
 import { ServiceItem } from "./types/serviceItem";
@@ -103,17 +105,13 @@ if (page) {
 
     services.forEach(item => {
 
-        const label = document.createElement("label");
-        
         item.priceFormated = formatCurrency(item.price);
 
-        label.innerHTML = eval("`"+ tpl.innerText + "`");
-
+        const label= appendChild("label", eval("`"+ tpl.innerText + "`"), options);
+        
         const labelInput = label.querySelector("input") as HTMLInputElement;
 
         labelInput.addEventListener("change", serviceSelectedChange);
-
-        options.appendChild(label);
 
     });
 
