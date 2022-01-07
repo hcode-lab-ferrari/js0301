@@ -1,7 +1,5 @@
-const path = require('path');
-
 module.exports = {
-  entry: './assets/scripts/src/index.ts',
+  entry: './public/assets/scripts/src/index.ts',
   resolve: {
     extensions: ['.ts', '.js'],
   },
@@ -14,14 +12,7 @@ module.exports = {
       },
     ],
   },
-  mode: 'development',
   output: {
     filename: 'bundle.js',
-  },
-  devServer: {
-    static: {
-      directory: path.join(__dirname),
-    },
-    port: 3000,
   },
 };
