@@ -1,31 +1,19 @@
 import appendChild from "./functions/appendChild";
 import formatCurrency from "./functions/formatCurrency";
-import getFormValues from "./functions/getFormValues";
 import queryStringToJSON from "./functions/queryStringToJSON";
 import setFormValues from "./functions/setFormValues";
 import { ServiceItem } from "./types/serviceItem";
+import {getFirestore, onSnapshot, collection} from "firebase/firestore";
+
+
 
 const page = document.querySelector("#schedules-services") as HTMLElement;
 
 if (page) {
 
+    const db = getFirestore();
     let servicesSelected: number[] = [];
-    const services: ServiceItem[] = [{
-        id: 1,
-        name: "Revisão",
-        description: "Verificação mínima necessária.",
-        price: 100
-    },{
-        id: 2,
-        name: "Alinhamento",
-        description: "Alinhamento e balanceamento.",
-        price: 400
-    },{
-        id: 3,
-        name: "Filtros",
-        description: "Troca do filtro de ar e combustível.",
-        price: 200
-    }];
+    let services: ServiceItem[] = [];
 
     const calcTotal = () => {
 
@@ -103,18 +91,36 @@ if (page) {
 
     options.innerHTML = "";
 
-    services.forEach(item => {
+    const renderServices = () => {
 
-        item.priceFormated = formatCurrency(item.price);
+        options.innerHTML = "";
 
-        const label= appendChild("label", eval("`"+ tpl.innerText + "`"), options);
-        
-        const labelInput = label.querySelector("input") as HTMLInputElement;
+        services.forEach(item => {
 
-        labelInput.addEventListener("change", serviceSelectedChange);
+            item.priceFormated = formatCurrency(item.price);
 
-    });
+            const label= appendChild("label", eval("`"+ tpl.innerText + "`"), options);
+            
+            const labelInput = label.querySelector("input") as HTMLInputElement;
+
+            labelInput.addEventListener("change", serviceSelectedChange);
+
+        });
+
+    }
 
     renderCart();
+
+    onSnapshot(collection(db, "services"), (collection) => {
+        
+        services = [];
+
+        collection.forEach(doc => {
+            services.push(doc.data() as ServiceItem);
+        });
+
+        renderServices();
+
+    });
 
 }

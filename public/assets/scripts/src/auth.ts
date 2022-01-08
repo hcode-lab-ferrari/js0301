@@ -1,5 +1,7 @@
 // Arquivo para o controle dos formulário de autenticação;
 
+import queryStringToJSON from "./functions/queryStringToJSON";
+
 const authPage = document.querySelector("main#auth");
 
 if (authPage) {
@@ -27,21 +29,30 @@ if (authPage) {
       });
     }
 
-    switch (window.location.hash) {
-      case "#register":
-        showAuthForm("register");
-        break;
-      case "#login":
-        showAuthForm("login");
-        break;
-      case "#forget":
-        showAuthForm("forget");
-        break;
-      case "#reset":
-        showAuthForm("reset");
-        break;
-      default:
-        showAuthForm("auth-email");
+    const queryString = queryStringToJSON();
+
+    if (queryString.mode && queryString.mode === "resetPassword") {
+
+      location.hash = "#reset";
+      showAuthForm("reset");
+
+    } else {
+      switch (window.location.hash) {
+        case "#register":
+          showAuthForm("register");
+          break;
+        case "#login":
+          showAuthForm("login");
+          break;
+        case "#forget":
+          showAuthForm("forget");
+          break;
+        case "#reset":
+          showAuthForm("reset");
+          break;
+        default:
+          showAuthForm("auth-email");
+      }
     }
   };
 

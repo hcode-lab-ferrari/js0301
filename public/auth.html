@@ -54,7 +54,7 @@
         <hr />
 
         <div class="field">
-          <input type="email" name="email" id="email-login" readonly value="joao@hcode.com.br" />
+          <input type="email" name="email" id="email-login" />
           <label for="email-login">E-mail</label>
         </div>
 
@@ -78,7 +78,7 @@
         <hr />
 
         <div class="field">
-          <input type="email" name="email" id="email-register" readonly value="joao@hcode.com.br" />
+          <input type="email" name="email" id="email-register" />
           <label for="email-register">E-mail</label>
         </div>
 
@@ -113,7 +113,11 @@
 
         <hr />
 
-        <div class="loading-wrap">
+        <div class="actions">
+          <button type="submit">Enviar E-mail</button>
+        </div>
+
+        <div class="loading-wrap" style="display: none;">
           <div class="loading">
             <div></div>
             <div></div>
@@ -123,7 +127,7 @@
           <p>Por favor, aguarde...</p>
         </div>
 
-        <div class="message">
+        <div class="message" style="display:none">
           <img src="assets/images/check-circle.svg" alt="Ok" />
           <span>Verifique as instruções no seu e-mail.</span>
         </div>
